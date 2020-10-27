@@ -1,17 +1,21 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public class CharacterFrog {
+import javax.imageio.ImageIO;
+
+public class CharacterCar {
 	
 				int positionX;
 				int positionY;
-				Image img = Toolkit.getDefaultToolkit().getImage("frogJump.gif");
-	
+				Image img = Toolkit.getDefaultToolkit().getImage("car01.gif");
 				
-				public CharacterFrog(int x,int y) {
+				
+				public CharacterCar(int x,int y) {
 					
 					this.positionX=x;
 					this.positionY=y;
@@ -49,10 +53,13 @@ public class CharacterFrog {
 				public void draw(Graphics graphics) {
 					
 					
-					//graphics.fillRect(positionX, positionY, 50, 50);
 					graphics.drawImage(img, positionX, positionY, null);
+					
+					
 				}
 				
+			
+	
 				
 				
 }

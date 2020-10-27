@@ -25,10 +25,9 @@ public class Boxes {
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Zdravo Milena. U danasnjoj potrazi ces pronaci blago na drugoj strani.", 310, 130);
-						g.drawString("Ako uspes da uzmes blago i prezivis bices nagradjena ", 310, 145);
-						g.drawString("komplet lepinjom ili ustipcima. Muva vise nema. ", 310, 160);
-						g.drawString("Pritisni enter da nastavis, ako ne posjesce te zla vestica Jackie. ", 310, 190);
+						g.drawString("Zdravo Zabice. Pokusaj da prezivis.", 310, 130);
+						g.drawString("Ako uspes da prezivis dobices plazmu :) ", 310, 145);
+
 						
 					}
 					
@@ -37,7 +36,7 @@ public class Boxes {
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Vreme je isteklo.", 310, 130);
+						g.drawString("Vreme je isteklo a plazme nidje", 310, 130);
 						
 
 						

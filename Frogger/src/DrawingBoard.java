@@ -24,9 +24,10 @@ public class DrawingBoard extends JPanel{
 					private JFrame frame;
 					CharacterFrog frog;
 					MenuObjects mo;
+					CharacterCar car;
+					private JLabel cars=new JLabel("False");
 					Boxes bx;
 					Image img=null;
-					Image img2=null;
 					private Component component;
 					JLabel gameStarted;
 					MouseEvent e = new MouseEvent(gameStarted,frog,component);
@@ -40,11 +41,11 @@ public class DrawingBoard extends JPanel{
 					private boolean gameMusic=false;
 					private JLabel timerFinished;
 					private JLabel timerEnding;
-					Timers t = new Timers(timerEnding,timerFinished);
+					Timers t = new Timers(car,cars,timerEnding,timerFinished);
 					
 		
 					
-					public DrawingBoard(JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog) {
+					public DrawingBoard(CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog) {
 						
 						
 						super.setBackground(Color.BLACK);
@@ -57,6 +58,7 @@ public class DrawingBoard extends JPanel{
 						this.stop=stop;
 						this.timerFinished=timerFinished;
 						this.timerEnding=timerEnding;
+						this.car=car;
 						
 					}
 							
@@ -90,12 +92,10 @@ public class DrawingBoard extends JPanel{
 							gameEnded=true;
 						}	
 						
-						
+						//img = Toolkit.getDefaultToolkit().getImage("Background.gif");
 						img = Toolkit.getDefaultToolkit().getImage("Background.gif");
-						img2 = Toolkit.getDefaultToolkit().getImage("frogJump.gif");
 						
-						
-						super.paintComponent(g);
+						//super.paintComponent(g);
 						g.drawImage(img, 0, 0, this);
 						bx.draw(g);	
 						started=true;
@@ -110,20 +110,30 @@ public class DrawingBoard extends JPanel{
 						
 						}
 					
+					System.out.println(gameStarted.getText()+"   "+started);
 					//draws character after enter is pressed on popup box after the game is started
 					
 					if(gameStarted.getText().equals("close") && started==true) {
 						
 						
-						super.paintComponent(g);
+						//super.paintComponent(g);
+						
 						stop.setText("Start");
+						
 						g.drawImage(img, 0, 0, this);
+						
 						frog.draw(g);
-									
+						car.draw(g);
+						
+						
+						if(cars.getText().equals("False")) {
+						t.timerCar(car,cars,timerEnding);
+						}
 					}
-					
+					component.repaint();
 					
 					// if timer first game timer is finished it will show up box with ending message
+					
 					
 					if(this.timerFinished.getText().equals("True")) {
 						
@@ -147,6 +157,8 @@ public class DrawingBoard extends JPanel{
 							timerEnding.setText("False");
 							frog.setPositionX(500);
 							frog.setPositionY(670);
+							car.setPositionX(800);
+							this.cars.setText("False");
 							
 						}
 						
@@ -156,16 +168,16 @@ public class DrawingBoard extends JPanel{
 					
 					//draws new frog position after key is pressed in KeyListener
 					
-					if(gameStarted.getText().equals("jump")) {
+					//if(gameStarted.getText().equals("jump")) {
 						
-						super.paintComponent(g);
-						g.drawImage(img, 0, 0, this);
-						g.drawImage(img2, frog.getPositionX(), frog.getPostitionY(), this);
-						gameStarted.setText("close");
-					       
+						//super.paintComponent(g);
+						
+						//g.drawImage(img, 0, 0, this);
+						//gameStarted.setText("close");
+					    
 	
 						
-					}
+					//}
 					
 					
 					

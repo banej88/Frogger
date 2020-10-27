@@ -46,7 +46,7 @@ public class KeyListeners implements KeyListener{
 			
 			
 			gameStarted.setText("close");
-			
+			component.repaint();
 		}
 		
 		
@@ -59,7 +59,7 @@ public class KeyListeners implements KeyListener{
 			
 			else {
 			
-			gameStarted.setText("jump");
+			//gameStarted.setText("jump");
 			frog.move(-30, 0);	
 			m.playJump();
 			
@@ -73,7 +73,7 @@ public class KeyListeners implements KeyListener{
 				
 			}else {
 			
-			gameStarted.setText("jump");
+			//gameStarted.setText("jump");
 			frog.move(30, 0);
 			m.playJump();
 			
@@ -85,7 +85,7 @@ public class KeyListeners implements KeyListener{
 				
 			}else {
 			
-			gameStarted.setText("jump");
+			//gameStarted.setText("jump");
 			frog.move(0, -30);
 			m.playJump();
 			
@@ -97,14 +97,14 @@ public class KeyListeners implements KeyListener{
 				
 			}else {
 			
-			gameStarted.setText("jump");
+			//gameStarted.setText("jump");
 			frog.move(0, 30);
 			m.playJump();
 			
 			}
 		}
 
-		component.repaint();
+		
 		
 		
 		
