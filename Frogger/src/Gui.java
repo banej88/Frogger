@@ -13,8 +13,8 @@ public class Gui implements Runnable{
 	
 	
 	private JFrame frame;
-	CharacterFrog frog = new CharacterFrog(500,670);
-	CharacterCar car = new CharacterCar(800,500);
+	CharacterFrog frog = new CharacterFrog(500,670,0);
+	CharacterCar car = new CharacterCar(800,500,0);
 	MenuObjects mo = new MenuObjects();
 	Boxes bx = new Boxes();
 	private JLabel startGame=new JLabel("False");
@@ -22,12 +22,14 @@ public class Gui implements Runnable{
 	private JLabel stop = new JLabel("Start");
 	private JLabel timerFinished = new JLabel("False");
 	private JLabel timerEnding = new JLabel("False");
+	private JLabel frogJump = new JLabel("False");
 	
 	public void run() {
 		
 		frame = new JFrame("Frogger");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1024,768));						
+		frame.setPreferredSize(new Dimension(1024,768));							
+		
 		
 		createComponent(frame.getContentPane());
 		
@@ -41,9 +43,9 @@ public class Gui implements Runnable{
 	
 	public void createComponent(Container container) {
 			
-				DrawingBoard db = new DrawingBoard(car,timerEnding,timerFinished,stop,timer,bx,startGame,mo,frame,frog);
+				DrawingBoard db = new DrawingBoard(frogJump,car,timerEnding,timerFinished,stop,timer,bx,startGame,mo,frame,frog);
 				container.add(db);
-				KeyListeners kl = new KeyListeners(stop,startGame,bx,frame,frog,db);
+				KeyListeners kl = new KeyListeners(frogJump,stop,startGame,bx,frame,frog,db);
 				frame.addKeyListener(kl);
 				MouseEvent e = new MouseEvent(startGame,frog,db);
 				frame.addMouseListener(e);

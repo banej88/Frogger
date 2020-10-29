@@ -35,17 +35,20 @@ public class DrawingBoard extends JPanel{
 					Music music = new Music();
 					Timer t2;
 					private JLabel timer;
+					private JLabel frogJump;
 					private JLabel stop;
 					private boolean gameEnded=false;
 					private boolean introMusic=false;
 					private boolean gameMusic=false;
 					private JLabel timerFinished;
 					private JLabel timerEnding;
-					Timers t = new Timers(car,cars,timerEnding,timerFinished);
-					
+					Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
+					private int backCounter=0;
+					private boolean isFrogDead=false;
+									
 		
 					
-					public DrawingBoard(CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog) {
+					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog) {
 						
 						
 						super.setBackground(Color.BLACK);
@@ -59,6 +62,7 @@ public class DrawingBoard extends JPanel{
 						this.timerFinished=timerFinished;
 						this.timerEnding=timerEnding;
 						this.car=car;
+						this.frogJump=frogJump;
 						
 					}
 							
@@ -77,7 +81,7 @@ public class DrawingBoard extends JPanel{
 							
 					
 					// checking to see if gameStarted is set tu true so intro song can be stoped and to check if gameEnded so it can start timing the game
-					
+				
 					if(gameStarted.getText().equals("True")) {
 						
 						music.stopIntroSong();
@@ -92,11 +96,16 @@ public class DrawingBoard extends JPanel{
 							gameEnded=true;
 						}	
 						
-						//img = Toolkit.getDefaultToolkit().getImage("Background.gif");
-						img = Toolkit.getDefaultToolkit().getImage("Background.gif");
 						
-						//super.paintComponent(g);
+						img = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png");
+						
+					
+						
+						if(backCounter==0) {
 						g.drawImage(img, 0, 0, this);
+						}
+						
+						
 						bx.draw(g);	
 						started=true;
 						
@@ -110,19 +119,48 @@ public class DrawingBoard extends JPanel{
 						
 						}
 					
-					System.out.println(gameStarted.getText()+"   "+started);
+					
 					//draws character after enter is pressed on popup box after the game is started
 					
 					if(gameStarted.getText().equals("close") && started==true) {
 						
 						
-						//super.paintComponent(g);
-						
+					
+						backCounter++;
 						stop.setText("Start");
 						
-						g.drawImage(img, 0, 0, this);
 						
-						frog.draw(g);
+						if(cars.getText().equals("False")) {
+							t.timerBackground(cars);;
+							}
+						
+						
+						car.drawBackground(g);
+						
+						
+						//400x133 are image dimensions
+					
+						
+						if(frog.getPositionX()>=car.getPositionX()+50 && frog.getPositionX()<=car.getPositionX()+400
+								&& frog.getPostitionY()>=car.getPostitionY() && frog.getPostitionY()<=car.getPostitionY()+133) {
+							
+						
+							car.drawBackgroundOver(g);  
+							frog.drawDead(g);
+							isFrogDead=true;	
+							music.playSquish();
+							t.t.stop();    // since frog is dead level timer needs to be stopped
+								
+							
+						}else {
+							
+							frog.draw(g);
+						}
+						
+						
+						if(cars.getText().equals("False")) {
+						t.timerAnimations(car,cars,timerEnding);
+						}
 						car.draw(g);
 						
 						
@@ -135,12 +173,25 @@ public class DrawingBoard extends JPanel{
 					// if timer first game timer is finished it will show up box with ending message
 					
 					
-					if(this.timerFinished.getText().equals("True")) {
+					if(this.timerFinished.getText().equals("True") || isFrogDead==true) {
 						
+						if(isFrogDead) {
+							bx.drawEndDead(g);  
+							
+							
+						}else {
 						bx.drawEnd(g);
+						}
+						
+						
 						music.stopGameSong();
 						stop.setText("Stop");
 						t.timerE(timerEnding);
+						t.animations.stop();
+						t.background.stop();
+						isFrogDead=false;
+						car.setFrame(11);
+						
 						
 						// if second timer is done with countound on game ending screen it will revert values to orginial state
 						
@@ -159,27 +210,15 @@ public class DrawingBoard extends JPanel{
 							frog.setPositionY(670);
 							car.setPositionX(800);
 							this.cars.setText("False");
+							backCounter=0;
+							music.resetSquishCount();
+							
 							
 						}
-						
-						
+										
 					      
 						}
-					
-					//draws new frog position after key is pressed in KeyListener
-					
-					//if(gameStarted.getText().equals("jump")) {
-						
-						//super.paintComponent(g);
-						
-						//g.drawImage(img, 0, 0, this);
-						//gameStarted.setText("close");
-					    
-	
-						
-					//}
-					
-					
+							
 					
 					}
 

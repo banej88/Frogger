@@ -42,6 +42,17 @@ public class Boxes {
 						
 					}
 					
+					public void drawEndDead(Graphics g) {
+						
+						g.setColor(Color.BLACK);
+						g.fillRect(getPosX(), getPosY(), 400, 200);;
+						g.setColor(Color.WHITE);
+						g.drawString("Zabica je zgazena...", 310, 130);
+						
+
+						
+					}
+					
 					
 					
 }

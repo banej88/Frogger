@@ -17,9 +17,14 @@ public class KeyListeners implements KeyListener{
 	private JLabel gameStarted;
 	Music m = new Music();
 	private JLabel stop;
-
+	private JLabel frogJump;
+	CharacterCar car;
+	private JLabel cars;
+	private JLabel timerFinished;
+	private JLabel timerEnding;
+	Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
 	
-	public KeyListeners(JLabel stop,JLabel gameStarted,Boxes bx,JFrame frame,CharacterFrog frog,Component component) {
+	public KeyListeners(JLabel frogJump,JLabel stop,JLabel gameStarted,Boxes bx,JFrame frame,CharacterFrog frog,Component component) {
 		
 		this.frog=frog;
 		this.component=component;
@@ -27,6 +32,7 @@ public class KeyListeners implements KeyListener{
 		this.bx=bx;
 		this.gameStarted=gameStarted;
 		this.stop=stop;
+		this.frogJump=frogJump;
 	}
 	
 
@@ -60,6 +66,10 @@ public class KeyListeners implements KeyListener{
 			else {
 			
 			//gameStarted.setText("jump");
+			if(frogJump.getText().equals("False")) {
+			t.timerFrog(frogJump, frog, component);
+			}
+			frogJump.setText("True");
 			frog.move(-30, 0);	
 			m.playJump();
 			
@@ -74,6 +84,10 @@ public class KeyListeners implements KeyListener{
 			}else {
 			
 			//gameStarted.setText("jump");
+			if(frogJump.getText().equals("False")) {
+			t.timerFrog(frogJump, frog, component);
+			}
+			frogJump.setText("True");
 			frog.move(30, 0);
 			m.playJump();
 			
@@ -86,8 +100,13 @@ public class KeyListeners implements KeyListener{
 			}else {
 			
 			//gameStarted.setText("jump");
+			if(frogJump.getText().equals("False")) {
+			t.timerFrog(frogJump, frog, component);
+			}
+			frogJump.setText("True");
 			frog.move(0, -30);
 			m.playJump();
+			
 			
 			}
 			
@@ -98,6 +117,10 @@ public class KeyListeners implements KeyListener{
 			}else {
 			
 			//gameStarted.setText("jump");
+			if(frogJump.getText().equals("False")) {
+			t.timerFrog(frogJump, frog, component);
+			}
+			frogJump.setText("True");
 			frog.move(0, 30);
 			m.playJump();
 			

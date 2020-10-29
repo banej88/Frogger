@@ -8,13 +8,21 @@ public class CharacterFrog {
 	
 				int positionX;
 				int positionY;
-				Image img = Toolkit.getDefaultToolkit().getImage("frogJump.gif");
-	
+				int frame;
 				
-				public CharacterFrog(int x,int y) {
+				Image img[] = {Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog001.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog002.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog003.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog004.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog005.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frogDead.png")};
+				
+				
+				public CharacterFrog(int x,int y,int frame) {
 					
 					this.positionX=x;
 					this.positionY=y;
+					this.frame=frame;
 				}
 				
 				public int getPositionX() {
@@ -46,11 +54,23 @@ public class CharacterFrog {
 					this.positionY=y+this.positionY;
 				}
 				
+				public void setFrame(int frame) {
+					
+					this.frame=frame;
+				}
+				
 				public void draw(Graphics graphics) {
 					
 					
 					//graphics.fillRect(positionX, positionY, 50, 50);
-					graphics.drawImage(img, positionX, positionY, null);
+					graphics.drawImage(img[frame], positionX, positionY, null);
+				}
+				
+				public void drawDead(Graphics graphics) {
+					
+					
+					//graphics.fillRect(positionX, positionY, 50, 50);
+					graphics.drawImage(img[5], positionX, positionY, null);
 				}
 				
 				

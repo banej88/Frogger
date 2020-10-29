@@ -9,6 +9,8 @@ public class Music {
 	private Clip clipIntro;
 	private Clip clipGame;
 	private Clip jump;
+	private Clip squish;
+	private int squishCount=0;
 	
 	public void playIntroSong() {
 		
@@ -64,6 +66,40 @@ public class Music {
 			
 		}
 		
+	}
+	
+	
+	
+	public void playSquish() {
+		
+		try {
+			
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Squish.wav").getAbsoluteFile());
+			squish = AudioSystem.getClip();
+			squish.open(audioInputStream);
+			
+			if(squishCount<1) {
+			squish.start();
+			}
+			squishCount++;
+		}
+		catch (Exception ex) {
+				
+			squish.stop();
+			
+		}
+		
+	}
+	
+	public void resetSquishCount() {
+		
+		this.squishCount=0;
+	}
+	
+	
+	public void stopSquish(){
+		
+		squish.stop();
 	}
 	
 	public void stopIntroSong() {
