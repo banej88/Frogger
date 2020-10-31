@@ -45,7 +45,7 @@ public class Timers {
 	t = new Timer(1000, new ActionListener() {
           public void actionPerformed(ActionEvent e) {	    	  
         	  
-        	  	
+        	  
         	  	counter++;
         	  	
         	  	if(counter==60) {
@@ -100,14 +100,14 @@ public class Timers {
 		car = new Timer(3,new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(car2.getPositionX()==-439) {
+				if(car2.getPositionX()<=-439) {
 					
 					car2.setPositionX(800);
 					
 				}
 				
 				
-				car2.setPositionX(car2.getPositionX()-1);
+				car2.setPositionX(car2.getPositionX()-12);
 				
 				
 				if(timerEnding.getText().equals("True")) {
@@ -131,7 +131,7 @@ public class Timers {
 		this.cars=cars;
 		this.timerEnding=timerEnding;
 		
-		animations = new Timer(200,new ActionListener() {
+		animations = new Timer(150,new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 							
@@ -154,16 +154,18 @@ public class Timers {
 	public void timerBackground(JLabel cars) {
 		this.cars=cars;
 
-		background = new Timer(190, new ActionListener() {
+		background = new Timer(100, new ActionListener() {
 			
 			public void actionPerformed(ActionEvent ae) {
+				
+				
 				
 				car2.setFrameBackround(counterBackgroundFrame);
 					
 				counterBackgroundFrame++;
 				
 				
-				if(counterBackgroundFrame==4) {
+				if(counterBackgroundFrame==5) {
 					
 					
 					counterBackgroundFrame=0;

@@ -52,7 +52,7 @@ public class KeyListeners implements KeyListener{
 			
 			
 			gameStarted.setText("close");
-			component.repaint();
+			//component.repaint();
 		}
 		
 		

@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 
-public class DrawingBoard extends JPanel{
+public class DrawingBoard extends JPanel {
 
 					private JFrame frame;
 					CharacterFrog frog;
@@ -45,7 +45,9 @@ public class DrawingBoard extends JPanel{
 					Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
 					private int backCounter=0;
 					private boolean isFrogDead=false;
-									
+					private boolean frogDrown=false;
+					
+						
 		
 					
 					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog) {
@@ -64,25 +66,32 @@ public class DrawingBoard extends JPanel{
 						this.car=car;
 						this.frogJump=frogJump;
 						
+						
 					}
 							
 		
 					protected void paintComponent(Graphics g) {
 						
 					//paints main menu components and starts intro music	
-					
+
+						
+					// ****************************** move update frames from timers to drawing board to avoid flicker
+						
 					super.paintComponent(g);
 					mo.draw(g);
-						
+					
+					
 					if(introMusic==false) {
 					music.playIntroSong();
 					introMusic=true;
 					}
-							
+					
 					
 					// checking to see if gameStarted is set tu true so intro song can be stoped and to check if gameEnded so it can start timing the game
-				
+					
 					if(gameStarted.getText().equals("True")) {
+						
+						
 						
 						music.stopIntroSong();
 						
@@ -98,11 +107,11 @@ public class DrawingBoard extends JPanel{
 						
 						
 						img = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png");
-						
-					
+								
 						
 						if(backCounter==0) {
 						g.drawImage(img, 0, 0, this);
+						
 						}
 						
 						
@@ -117,24 +126,24 @@ public class DrawingBoard extends JPanel{
 						}
 						frog.draw(g);
 						
-						}
-					
+						}			
 					
 					//draws character after enter is pressed on popup box after the game is started
 					
 					if(gameStarted.getText().equals("close") && started==true) {
 						
 						
-					
+						
 						backCounter++;
 						stop.setText("Start");
 						
 						
 						if(cars.getText().equals("False")) {
 							t.timerBackground(cars);;
+							
 							}
 						
-						
+	
 						car.drawBackground(g);
 						
 						
@@ -152,22 +161,44 @@ public class DrawingBoard extends JPanel{
 							t.t.stop();    // since frog is dead level timer needs to be stopped
 								
 							
-						}else {
+							//310 220 y cordinates for river...x goes through while width
+							
+						}
+						
+						//check if frog is in the river
+						
+						if(frog.getPostitionY()>=180 && frog.getPostitionY()<=315) {
+							
+							car.drawBackgroundOver(g);  
+							frog.drawDrown(g);
+							isFrogDead=true;
+							frogDrown=true;
+							music.playDrowned();
+							t.t.stop();
+						}
+						
+						else if(isFrogDead==false){
 							
 							frog.draw(g);
+							
 						}
 						
 						
 						if(cars.getText().equals("False")) {
 						t.timerAnimations(car,cars,timerEnding);
 						}
+						//car.setFrame(0);
 						car.draw(g);
 						
 						
 						if(cars.getText().equals("False")) {
 						t.timerCar(car,cars,timerEnding);
 						}
+						
+						
 					}
+					
+					
 					component.repaint();
 					
 					// if timer first game timer is finished it will show up box with ending message
@@ -176,8 +207,16 @@ public class DrawingBoard extends JPanel{
 					if(this.timerFinished.getText().equals("True") || isFrogDead==true) {
 						
 						if(isFrogDead) {
+							
+							if(frogDrown==true) {
+								
+								bx.drawEndDeadDrown(g);
+								
+							}else {
+								
 							bx.drawEndDead(g);  
 							
+							}
 							
 						}else {
 						bx.drawEnd(g);
@@ -212,6 +251,8 @@ public class DrawingBoard extends JPanel{
 							this.cars.setText("False");
 							backCounter=0;
 							music.resetSquishCount();
+							music.resetDrownedCount();
+							frogDrown=false;
 							
 							
 						}

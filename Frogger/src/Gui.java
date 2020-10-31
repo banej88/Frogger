@@ -44,6 +44,7 @@ public class Gui implements Runnable{
 	public void createComponent(Container container) {
 			
 				DrawingBoard db = new DrawingBoard(frogJump,car,timerEnding,timerFinished,stop,timer,bx,startGame,mo,frame,frog);
+			
 				container.add(db);
 				KeyListeners kl = new KeyListeners(frogJump,stop,startGame,bx,frame,frog,db);
 				frame.addKeyListener(kl);

@@ -53,6 +53,17 @@ public class Boxes {
 						
 					}
 					
+					public void drawEndDeadDrown(Graphics g) {
+						
+						g.setColor(Color.BLACK);
+						g.fillRect(getPosX(), getPosY(), 400, 200);;
+						g.setColor(Color.WHITE);
+						g.drawString("Zabica se utopila...", 310, 130);
+						
+
+						
+					}
+					
 					
 					
 }

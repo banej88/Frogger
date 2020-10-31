@@ -11,6 +11,8 @@ public class Music {
 	private Clip jump;
 	private Clip squish;
 	private int squishCount=0;
+	private Clip drowned;
+	private int drownedCount=0;
 	
 	public void playIntroSong() {
 		
@@ -91,11 +93,43 @@ public class Music {
 		
 	}
 	
+	public void playDrowned() {
+		
+		try {
+			
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Drowned.wav").getAbsoluteFile());
+			drowned = AudioSystem.getClip();
+			drowned.open(audioInputStream);
+			
+			if(drownedCount<1) {
+				drowned.start();
+			}
+			drownedCount++;
+		}
+		catch (Exception ex) {
+				
+			drowned.stop();
+			
+		}
+		
+	}
+	
+	
+	
 	public void resetSquishCount() {
 		
 		this.squishCount=0;
 	}
 	
+	public void resetDrownedCount() {
+		
+		this.drownedCount=0;
+	}
+	
+	public void stopDrowned() {
+		
+		drowned.stop();
+	}
 	
 	public void stopSquish(){
 		

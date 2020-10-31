@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -7,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -15,13 +18,17 @@ public class CharacterCar {
 				int positionX;
 				int positionY;
 				int frame;
-				int frame2;			
+				int frame2;	
+				private Image doubleBuffer;
+				private Component component;
+				private List<Image> lista = new ArrayList<Image>();
 				
 				Image imgBackground[]= {Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back002.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back003.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back004.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back005.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back006.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/backOver.png")};
 				
 				
@@ -46,6 +53,7 @@ public class CharacterCar {
 					this.positionY=y;
 					this.frame=frame;
 				}
+				
 				
 				public int getPositionX() {
 					
@@ -97,6 +105,7 @@ public class CharacterCar {
 				public void drawBackground(Graphics graphics) {
 					
 					
+					
 					graphics.drawImage(imgBackground[frame2], 0, 0, null);
 					
 					
@@ -104,7 +113,7 @@ public class CharacterCar {
 				
 				public void drawBackgroundOver(Graphics graphics) {
 	
-					graphics.drawImage(imgBackground[5], 0, 0, null);
+					graphics.drawImage(imgBackground[6], 0, 0, null);
 	
 				}
 				
