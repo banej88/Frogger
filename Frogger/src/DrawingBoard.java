@@ -42,11 +42,12 @@ public class DrawingBoard extends JPanel {
 					private boolean gameMusic=false;
 					private JLabel timerFinished;
 					private JLabel timerEnding;
-					Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
 					private int backCounter=0;
 					private boolean isFrogDead=false;
 					private boolean frogDrown=false;
+
 					
+					Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
 						
 		
 					
@@ -139,11 +140,11 @@ public class DrawingBoard extends JPanel {
 						
 						
 						if(cars.getText().equals("False")) {
-							t.timerBackground(cars);;
+							t.timerBackground(cars);
 							
 							}
 						
-	
+						
 						car.drawBackground(g);
 						
 						

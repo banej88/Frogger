@@ -33,6 +33,7 @@ public class KeyListeners implements KeyListener{
 		this.gameStarted=gameStarted;
 		this.stop=stop;
 		this.frogJump=frogJump;
+		
 	}
 	
 

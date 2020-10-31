@@ -25,6 +25,9 @@ public class Timers {
 	int frogCounter=0;
 	JLabel frogJump;
 	Component component;
+	private int timerCar=0;
+	private int timerBackground=0;
+	
 	
 	
 	public Timers(JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
@@ -35,6 +38,7 @@ public class Timers {
 		this.car2=car2;
 		this.frogMain=frogMain;
 		this.frogJump=frogJump;
+		
 	}
 	
 	
@@ -97,7 +101,7 @@ public class Timers {
 		this.car2=car2;
 		this.timerEnding=timerEnding;
 		
-		car = new Timer(3,new ActionListener() {
+		car = new Timer(1,new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(car2.getPositionX()<=-439) {
@@ -107,13 +111,20 @@ public class Timers {
 				}
 				
 				
-				car2.setPositionX(car2.getPositionX()-12);
+				
+				if(timerCar==5) {
+				car.setDelay(3);
+				}
+				
+				timerCar++;
+				car2.setPositionX(car2.getPositionX()-3);
 				
 				
 				if(timerEnding.getText().equals("True")) {
 					
 				
 					car.stop();
+					timerCar=0;
 					
 				}
 				
@@ -153,20 +164,22 @@ public class Timers {
 	
 	public void timerBackground(JLabel cars) {
 		this.cars=cars;
-
-		background = new Timer(100, new ActionListener() {
+		
+		
+		background = new Timer(1, new ActionListener() {
 			
 			public void actionPerformed(ActionEvent ae) {
+				
 				
 				
 				
 				car2.setFrameBackround(counterBackgroundFrame);
 					
 				counterBackgroundFrame++;
-				
+			
 				
 				if(counterBackgroundFrame==5) {
-					
+					background.setDelay(120);
 					
 					counterBackgroundFrame=0;
 				}
