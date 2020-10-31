@@ -106,7 +106,7 @@ public class Timers {
 				
 				if(car2.getPositionX()<=-439) {
 					
-					car2.setPositionX(800);
+					car2.setPositionX(1600);
 					
 				}
 				
@@ -150,7 +150,7 @@ public class Timers {
 					
 				counterCarFrame++;
 						
-				if(counterCarFrame==10) {
+				if(counterCarFrame==5) {
 					
 					counterCarFrame=0;
 				}

@@ -38,11 +38,6 @@ public class CharacterCar {
 						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo004.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo005.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo006.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo007.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo008.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo009.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo010.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo011.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lamboNoLambo.png")};
 				
 			

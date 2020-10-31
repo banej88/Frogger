@@ -230,7 +230,7 @@ public class DrawingBoard extends JPanel {
 						t.animations.stop();
 						t.background.stop();
 						isFrogDead=false;
-						car.setFrame(11);
+						car.setFrame(6);
 						
 						
 						// if second timer is done with countound on game ending screen it will revert values to orginial state
