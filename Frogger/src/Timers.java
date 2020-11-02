@@ -30,7 +30,7 @@ public class Timers {
 	private int timerCar=0;
 	private int timerBackground=0;
 	
-	//Naming is not great, need to fix that
+	//Naming is not great, need to fix that.
 	
 	public Timers(JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
 		
