@@ -30,7 +30,6 @@ public class CharacterCar {
 				public void loadImages() throws IOException {
 					
 					
-					//imgBackround[0] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png");
 					imgBackround[0] = ImageIO.read(new File("Animations/BackgroundLevel01/back001.png"));
 					imgBackround[1] = ImageIO.read(new File("Animations/BackgroundLevel01/back002.png"));
 					imgBackround[2] = ImageIO.read(new File("Animations/BackgroundLevel01/back003.png"));
@@ -39,12 +38,7 @@ public class CharacterCar {
 					imgBackround[5]	= ImageIO.read(new File("Animations/BackgroundLevel01/back006.png"));
 					imgBackround[6]	= ImageIO.read(new File("Animations/BackgroundLevel01/backOver.png"));
 					
-					//imgBackround[1] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back002.png");
-					//imgBackround[2] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back003.png");
-					//imgBackround[3] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back004.png");
-					//imgBackround[4] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back005.png");
-					//imgBackround[5]	= Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back006.png");
-					//imgBackround[6]	= Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/backOver.png");
+					
 					
 					img[0] = ImageIO.read(new File("Animations/Lambo/lambo001.png"));
 					img[1] = ImageIO.read(new File("Animations/Lambo/lambo002.png"));
