@@ -16,7 +16,8 @@ public class CharacterFrog {
 						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog004.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog005.png"),
 						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frogDead.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frogDrown.png")};
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frogDrown.png"),
+						Toolkit.getDefaultToolkit().getImage("Animations/Frog/princess.png")};
 				
 				
 				public CharacterFrog(int x,int y,int frame) {
@@ -80,6 +81,14 @@ public class CharacterFrog {
 					//graphics.fillRect(positionX, positionY, 50, 50);
 					graphics.drawImage(img[6], positionX, positionY, null);
 				}
+				
+				public void drawPrincess(Graphics graphics) {
+					
+					
+					//graphics.fillRect(positionX, positionY, 50, 50);
+					graphics.drawImage(img[7], 750, 60, null);
+				}
+				
 				
 				
 				

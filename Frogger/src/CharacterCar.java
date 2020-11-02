@@ -19,28 +19,46 @@ public class CharacterCar {
 				int positionY;
 				int frame;
 				int frame2;	
-				private Image doubleBuffer;
 				private Component component;
 				private List<Image> lista = new ArrayList<Image>();
-				
-				Image imgBackground[]= {Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back002.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back003.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back004.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back005.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back006.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/backOver.png")};
+				private BufferedImage imgBackround[] =new BufferedImage[7];
+				private Image img[]=new Image[7];
 				
 				
-				Image img[] = {Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo001.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo002.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo003.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo004.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo005.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lambo006.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Lambo/lamboNoLambo.png")};
 				
-			
+				
+				public void loadImages() throws IOException {
+					
+					
+					//imgBackround[0] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png");
+					imgBackround[0] = ImageIO.read(new File("Animations/BackgroundLevel01/back001.png"));
+					imgBackround[1] = ImageIO.read(new File("Animations/BackgroundLevel01/back002.png"));
+					imgBackround[2] = ImageIO.read(new File("Animations/BackgroundLevel01/back003.png"));
+					imgBackround[3] = ImageIO.read(new File("Animations/BackgroundLevel01/back004.png"));
+					imgBackround[4] = ImageIO.read(new File("Animations/BackgroundLevel01/back005.png"));
+					imgBackround[5]	= ImageIO.read(new File("Animations/BackgroundLevel01/back006.png"));
+					imgBackround[6]	= ImageIO.read(new File("Animations/BackgroundLevel01/backOver.png"));
+					
+					//imgBackround[1] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back002.png");
+					//imgBackround[2] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back003.png");
+					//imgBackround[3] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back004.png");
+					//imgBackround[4] = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back005.png");
+					//imgBackround[5]	= Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back006.png");
+					//imgBackround[6]	= Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/backOver.png");
+					
+					img[0] = ImageIO.read(new File("Animations/Lambo/lambo001.png"));
+					img[1] = ImageIO.read(new File("Animations/Lambo/lambo002.png"));
+					img[2] = ImageIO.read(new File("Animations/Lambo/lambo003.png"));
+					img[3] = ImageIO.read(new File("Animations/Lambo/lambo004.png"));
+					img[4] = ImageIO.read(new File("Animations/Lambo/lambo005.png"));
+					img[5] = ImageIO.read(new File("Animations/Lambo/lambo006.png"));
+					img[6] = ImageIO.read(new File("Animations/Lambo/lamboNoLambo.png"));
+	
+				}
+				
+				
+				
+				
 				
 				public CharacterCar(int x,int y,int frame) {
 					
@@ -98,17 +116,15 @@ public class CharacterCar {
 						
 				
 				public void drawBackground(Graphics graphics) {
-					
-					
-					
-					graphics.drawImage(imgBackground[frame2], 0, 0, null);
+
+					graphics.drawImage(imgBackround[frame2], 0, 0, null);
 					
 					
 				}
 				
 				public void drawBackgroundOver(Graphics graphics) {
 	
-					graphics.drawImage(imgBackground[6], 0, 0, null);
+					graphics.drawImage(imgBackround[6], 0, 0, null);
 	
 				}
 				

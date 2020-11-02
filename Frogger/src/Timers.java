@@ -1,4 +1,5 @@
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,7 @@ public class Timers {
 	Timer animations;
 	Timer background;
 	Timer frog;
+	Timer menu;
 	CharacterCar car2;
 	CharacterFrog frogMain;
 	private int counter=0;
@@ -49,13 +51,15 @@ public class Timers {
 	t = new Timer(1000, new ActionListener() {
           public void actionPerformed(ActionEvent e) {	    	  
         	  
-        	  
-        	  	counter++;
         	  	
+        	  	counter++;
+        	  	System.out.println(counter);
         	  	if(counter==60) {
+        	  		
         	  		t.stop();
         	  		timerFinished.setText("True");
         	  		counter=0;
+        	  		
         	  		
         	  	}
         	  	  	
@@ -96,12 +100,13 @@ public class Timers {
 	}
 	
 	
-	public void timerCar(CharacterCar car2,JLabel cars,JLabel timerEnding) {
+	public void timerCar(CharacterCar car2,JLabel cars,JLabel timerEnding,Component component) {
 		this.cars=cars;
 		this.car2=car2;
 		this.timerEnding=timerEnding;
+		this.component=component;
 		
-		car = new Timer(1,new ActionListener() {
+		car = new Timer(3,new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(car2.getPositionX()<=-439) {
@@ -112,14 +117,13 @@ public class Timers {
 				
 				
 				
-				if(timerCar==5) {
-				car.setDelay(3);
-				}
+			//	if(timerCar==5) {
+				//car.setDelay(3);
+				//}
 				
 				timerCar++;
 				car2.setPositionX(car2.getPositionX()-3);
-				
-				
+						
 				if(timerEnding.getText().equals("True")) {
 					
 				
@@ -127,6 +131,7 @@ public class Timers {
 					timerCar=0;
 					
 				}
+				component.repaint();
 				
 			}	
 			
@@ -136,13 +141,14 @@ public class Timers {
 	}
 	
 	
-	public void timerAnimations(CharacterCar car2,JLabel cars,JLabel timerEnding) {
+	public void timerAnimations(CharacterCar car2,JLabel cars,JLabel timerEnding,Component component) {
 		
 		this.car2=car2;
 		this.cars=cars;
 		this.timerEnding=timerEnding;
+		this.component=component;
 		
-		animations = new Timer(150,new ActionListener() {
+		animations = new Timer(180,new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 							
@@ -154,7 +160,7 @@ public class Timers {
 					
 					counterCarFrame=0;
 				}
-				
+				component.repaint();
 			}
 						
 		});animations.start();
@@ -162,11 +168,11 @@ public class Timers {
 	}
 	
 	
-	public void timerBackground(JLabel cars) {
+	public void timerBackground(JLabel cars,Component component) {
 		this.cars=cars;
+		this.component=component;
 		
-		
-		background = new Timer(1, new ActionListener() {
+		background = new Timer(120, new ActionListener() {
 			
 			public void actionPerformed(ActionEvent ae) {
 				
@@ -176,13 +182,14 @@ public class Timers {
 				car2.setFrameBackround(counterBackgroundFrame);
 					
 				counterBackgroundFrame++;
-			
+				
 				
 				if(counterBackgroundFrame==5) {
-					background.setDelay(120);
+					//background.setDelay(120);
 					
 					counterBackgroundFrame=0;
 				}
+				component.repaint();
 				
 			}			
 		});background.start();
@@ -218,14 +225,10 @@ public class Timers {
 				
 			}			
 		});frog.start();
-		
-		
-		
-		
+			
 	}
 	
 	
-
 
 
 }

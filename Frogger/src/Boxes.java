@@ -26,8 +26,8 @@ public class Boxes {
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
 						g.drawString("Zdravo Zabice. Pokusaj da prezivis.", 310, 130);
-						g.drawString("Ako uspes da prezivis dobices plazmu :) ", 310, 145);
-
+						g.drawString("Ako uspes da prezivis dobices plazmu :) Pritisni ENTER", 310, 145);
+						
 						
 					}
 					

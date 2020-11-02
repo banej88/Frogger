@@ -23,6 +23,7 @@ public class KeyListeners implements KeyListener{
 	private JLabel timerFinished;
 	private JLabel timerEnding;
 	Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
+	private int frogStarted=0;
 	
 	public KeyListeners(JLabel frogJump,JLabel stop,JLabel gameStarted,Boxes bx,JFrame frame,CharacterFrog frog,Component component) {
 		
@@ -53,12 +54,13 @@ public class KeyListeners implements KeyListener{
 			
 			
 			gameStarted.setText("close");
-			//component.repaint();
+			frogStarted=1;
+			component.repaint();
 		}
 		
 		
 
-		if(e.getKeyCode()==KeyEvent.VK_LEFT && stop.getText().equals("Start")) {
+		if(e.getKeyCode()==KeyEvent.VK_LEFT && stop.getText().equals("Start") && frogStarted==1) {
 			
 			if(frog.getPositionX()<5) {
 					
@@ -77,7 +79,7 @@ public class KeyListeners implements KeyListener{
 		
 			}
 			
-		}else if(e.getKeyCode()==KeyEvent.VK_RIGHT && stop.getText().equals("Start")){
+		}else if(e.getKeyCode()==KeyEvent.VK_RIGHT && stop.getText().equals("Start") && frogStarted==1){
 			
 			
 			if(frog.getPositionX()>960) {
@@ -94,7 +96,7 @@ public class KeyListeners implements KeyListener{
 			
 			}
 			
-		}else if(e.getKeyCode()==KeyEvent.VK_UP && stop.getText().equals("Start")) {
+		}else if(e.getKeyCode()==KeyEvent.VK_UP && stop.getText().equals("Start") && frogStarted==1) {
 			
 			if(frog.getPostitionY()<5) {
 				
@@ -111,7 +113,7 @@ public class KeyListeners implements KeyListener{
 			
 			}
 			
-		}else if(e.getKeyCode()==KeyEvent.VK_DOWN && stop.getText().equals("Start")) {
+		}else if(e.getKeyCode()==KeyEvent.VK_DOWN && stop.getText().equals("Start") && frogStarted==1) {
 			
 			if(frog.getPostitionY()>680) {
 				
