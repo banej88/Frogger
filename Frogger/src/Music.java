@@ -14,6 +14,8 @@ public class Music {
 	private Clip drowned;
 	private int drownedCount=0;
 	
+	//Need to convert music to mp3 so it uses less space
+	
 	public void playIntroSong() {
 		
 		try {

@@ -25,7 +25,7 @@ public class MouseEvent implements MouseListener{
 		this.component=component;	
 		this.gameStarted=gameStarted;
 		
-		//adding cursor cordinates for exit option
+		//need to make it scalable
 		
 		for(int i=52;i<109;i++) {
 			

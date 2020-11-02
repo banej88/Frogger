@@ -80,7 +80,7 @@ public class DrawingBoard extends JPanel {
 					//paints main menu components and starts intro music	
 
 						
-					// ****************************** move update frames from timers to drawing board to avoid flicker
+					// After using image buffer more ram usage each time game is restarted..needs fixing
 					
 						
 					super.paintComponent(g);

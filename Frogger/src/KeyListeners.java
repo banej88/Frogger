@@ -58,7 +58,7 @@ public class KeyListeners implements KeyListener{
 			component.repaint();
 		}
 		
-		
+		// using frogStarted so frog can't move while on message screen
 
 		if(e.getKeyCode()==KeyEvent.VK_LEFT && stop.getText().equals("Start") && frogStarted==1) {
 			

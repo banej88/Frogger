@@ -64,28 +64,28 @@ public class CharacterFrog {
 				public void draw(Graphics graphics) {
 					
 					
-					//graphics.fillRect(positionX, positionY, 50, 50);
+					
 					graphics.drawImage(img[frame], positionX, positionY, null);
 				}
 				
 				public void drawDead(Graphics graphics) {
 					
 					
-					//graphics.fillRect(positionX, positionY, 50, 50);
+					
 					graphics.drawImage(img[5], positionX, positionY, null);
 				}
 				
 				public void drawDrown(Graphics graphics) {
 					
 					
-					//graphics.fillRect(positionX, positionY, 50, 50);
+					
 					graphics.drawImage(img[6], positionX, positionY, null);
 				}
 				
 				public void drawPrincess(Graphics graphics) {
 					
 					
-					//graphics.fillRect(positionX, positionY, 50, 50);
+				
 					graphics.drawImage(img[7], 750, 60, null);
 				}
 				

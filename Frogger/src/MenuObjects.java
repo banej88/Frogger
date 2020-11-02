@@ -34,6 +34,8 @@ public class MenuObjects {
 	
 	
 					public void draw(Graphics g) {
+						
+									//need to update so it shows only once
 									
 									g.setColor(Color.WHITE);
 									g.drawString("Start game", startX, startY);
