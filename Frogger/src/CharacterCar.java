@@ -22,7 +22,7 @@ public class CharacterCar {
 				private Component component;
 				private List<Image> lista = new ArrayList<Image>();
 				private BufferedImage imgBackround[] =new BufferedImage[7];
-				private Image img[]=new Image[7];
+				private BufferedImage img[]=new BufferedImage[7];
 				
 				
 				
@@ -50,6 +50,7 @@ public class CharacterCar {
 					img[5] = ImageIO.read(new File("Animations/Lambo/lambo006.png"));
 					img[6] = ImageIO.read(new File("Animations/Lambo/lamboNoLambo.png"));
 	
+					
 				}
 				
 				
@@ -121,6 +122,12 @@ public class CharacterCar {
 				public void drawBackgroundOver(Graphics graphics) {
 	
 					graphics.drawImage(imgBackround[6], 0, 0, null);
+	
+				}
+				
+				public void drawStaticBackground(Graphics graphics) {
+					
+					graphics.drawImage(imgBackround[0], 0, 0, null);
 	
 				}
 				

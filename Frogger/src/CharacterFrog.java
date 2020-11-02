@@ -2,23 +2,33 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class CharacterFrog {
 	
 				int positionX;
 				int positionY;
 				int frame;
+				BufferedImage img[]=new BufferedImage[8];
 				
-				Image img[] = {Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog001.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog002.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog003.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog004.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frog005.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frogDead.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/frogDrown.png"),
-						Toolkit.getDefaultToolkit().getImage("Animations/Frog/princess.png")};
 				
+				public void loadFrog() throws IOException {
+				
+				img[0] = ImageIO.read(new File("Animations/Frog/frog001.png"));
+				img[1] = ImageIO.read(new File("Animations/Frog/frog002.png"));
+				img[2] = ImageIO.read(new File("Animations/Frog/frog003.png"));
+				img[3] = ImageIO.read(new File("Animations/Frog/frog004.png"));
+				img[4] = ImageIO.read(new File("Animations/Frog/frog005.png"));
+				img[5] = ImageIO.read(new File("Animations/Frog/frogDead.png"));
+				img[6] = ImageIO.read(new File("Animations/Frog/frogDrown.png"));
+				img[7] = ImageIO.read(new File("Animations/Frog/princess.png"));
+				
+				}
 				
 				public CharacterFrog(int x,int y,int frame) {
 					

@@ -100,21 +100,13 @@ public class DrawingBoard extends JPanel {
 						
 						
 						music.stopIntroSong();
-						
-						img = Toolkit.getDefaultToolkit().getImage("Animations/BackgroundLevel01/back001.png");
 								
-						
-						if(backCounter==0) {
-						g.drawImage(img, 0, 0, this);
-						
-						}
-						
-						System.out.println(loadImageCounter+"muuuuuuuuuu");
 						
 						if(loadImageCounter<1) {
 						try {
 							
 								car.loadImages();
+								frog.loadFrog();
 								loadImageCounter++;
 								
 						} catch (IOException e) {
@@ -122,6 +114,11 @@ public class DrawingBoard extends JPanel {
 							JOptionPane.showMessageDialog(null, "Cant load images", "Error", JOptionPane.PLAIN_MESSAGE);
 						}
 						}
+						
+						if(backCounter==0) {
+							car.drawStaticBackground(g);
+							
+							}
 						
 						
 						bx.draw(g);	
@@ -254,7 +251,8 @@ public class DrawingBoard extends JPanel {
 						t.background.stop();
 						isFrogDead=false;
 						car.setFrame(6);
-						component.repaint();
+						//component.repaint(); // causing memory leak
+					
 						
 						// if second timer is done with countound on game ending screen it will revert values to orginial state
 						
@@ -278,6 +276,7 @@ public class DrawingBoard extends JPanel {
 							music.resetSquishCount();
 							music.resetDrownedCount();
 							frogDrown=false;
+							
 							
 						}
 										

@@ -36,7 +36,7 @@ public class Boxes {
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Vreme je isteklo a plazme nidje", 310, 130);
+						g.drawString("Vreme je isteklo a plazme nidje Pritisni ENTER", 310, 130);
 						
 
 						
@@ -47,7 +47,7 @@ public class Boxes {
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Zabica je zgazena...", 310, 130);
+						g.drawString("Zabica je zgazena...Pritisni ENTER", 310, 130);
 						
 
 						
@@ -58,7 +58,7 @@ public class Boxes {
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Zabica se utopila...", 310, 130);
+						g.drawString("Zabica se utopila...Pritisni ENTER", 310, 130);
 						
 
 						

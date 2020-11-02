@@ -53,8 +53,8 @@ public class Timers {
         	  
         	  	
         	  	counter++;
-        	  	System.out.println(counter);
-        	  	if(counter==60) {
+        	  	//System.out.println(counter);
+        	  	if(counter==30) {
         	  		
         	  		t.stop();
         	  		timerFinished.setText("True");
@@ -83,12 +83,16 @@ public class Timers {
 	        	//  System.out.println(counter2);
 	        	  	counter2++;
 	        	  	
-	        	  	if(counter2==6) {
+	        	  	if(counter2==1) {
 	        	  		tE.stop();
 	        	  		timerEnding.setText("True");
 	        	  		counter2=0;
+	        	  		component.repaint();
+	        	  		
 	        	  		
 	        	  	}
+	        	  	
+	        	  	//System.out.println(counter2);
 	        	  	  	
 	          }
 	       }
