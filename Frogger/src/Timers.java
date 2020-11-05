@@ -15,8 +15,10 @@ public class Timers {
 	Timer background;
 	Timer frog;
 	Timer menu;
+	Timer title;
 	CharacterCar car2;
 	CharacterFrog frogMain;
+	MenuObjects mo;
 	private int counter=0;
 	private int counter2=0;
 	private JLabel timerFinished;
@@ -29,10 +31,11 @@ public class Timers {
 	Component component;
 	private int timerCar=0;
 	private int timerBackground=0;
+	private int timerTitle=0;
 	
 	//Naming is not great, need to fix that.
 	
-	public Timers(JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
+	public Timers(MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
 		
 		this.timerFinished=timerFinished;
 		this.timerEnding=timerEnding;
@@ -40,8 +43,10 @@ public class Timers {
 		this.car2=car2;
 		this.frogMain=frogMain;
 		this.frogJump=frogJump;
+		this.mo=mo;
 		
 	}
+	
 	
 	
 	public void timer(JLabel timerFinished) {
@@ -69,6 +74,8 @@ public class Timers {
 			); t.start();        	  		
 				
 }
+	
+	
 	
 	
 	public void timerE(JLabel timerEnding) {
@@ -230,6 +237,41 @@ public class Timers {
 			}			
 		});frog.start();
 			
+	}
+	
+	public void titleTimer(MenuObjects mo,Component component) {
+		
+		this.mo=mo;
+		this.component=component;
+		
+		title = new Timer(200, new ActionListener() {
+			
+			
+				public void actionPerformed(ActionEvent e) {
+					
+					
+					mo.setFrame(timerTitle);
+					component.repaint();
+					timerTitle++;
+					
+					
+					if(timerTitle==5) {
+						
+						
+						title.stop();
+						timerTitle=0;
+						
+					}
+					
+					
+					
+				}
+			
+			
+			
+		});title.start();
+				
+		
 	}
 	
 	

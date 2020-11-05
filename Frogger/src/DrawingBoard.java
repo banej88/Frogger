@@ -49,9 +49,9 @@ public class DrawingBoard extends JPanel {
 					private boolean isFrogDead=false;
 					private boolean frogDrown=false;
 					private int loadImageCounter=0;
-
+					private int timerTitle=0;
 					
-					Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
+					Timers t = new Timers(mo,frogJump,frog,car,cars,timerEnding,timerFinished,component);
 						
 		
 					
@@ -84,6 +84,15 @@ public class DrawingBoard extends JPanel {
 					
 						
 					super.paintComponent(g);
+					
+					
+					
+					if(timerTitle<1) {
+					mo.loadTitle();
+					t.titleTimer(mo,component);
+					timerTitle++;
+					}
+					
 					mo.draw(g);
 					
 					
@@ -276,7 +285,8 @@ public class DrawingBoard extends JPanel {
 							music.resetSquishCount();
 							music.resetDrownedCount();
 							frogDrown=false;
-							
+							timerTitle=0;
+							mo.setFrame(0);
 							
 						}
 										

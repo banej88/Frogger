@@ -12,6 +12,7 @@ public class KeyListeners implements KeyListener{
 
 	private Component component;
 	CharacterFrog frog;
+	MenuObjects mo;
 	private JFrame frame;
 	Boxes bx;
 	private JLabel gameStarted;
@@ -22,7 +23,7 @@ public class KeyListeners implements KeyListener{
 	private JLabel cars;
 	private JLabel timerFinished;
 	private JLabel timerEnding;
-	Timers t = new Timers(frogJump,frog,car,cars,timerEnding,timerFinished,component);
+	Timers t = new Timers(mo,frogJump,frog,car,cars,timerEnding,timerFinished,component);
 	private int frogStarted=0;
 	
 	public KeyListeners(JLabel frogJump,JLabel stop,JLabel gameStarted,Boxes bx,JFrame frame,CharacterFrog frog,Component component) {
