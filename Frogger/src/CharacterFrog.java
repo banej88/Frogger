@@ -16,7 +16,7 @@ public class CharacterFrog {
 				int positionY;
 				int frame;
 				BufferedImage img[]=new BufferedImage[8];
-				
+				//
 				
 				public void loadFrog() throws IOException {
 				
