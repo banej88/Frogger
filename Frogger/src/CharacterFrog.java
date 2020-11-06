@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -97,6 +98,16 @@ public class CharacterFrog {
 					
 				
 					graphics.drawImage(img[7], 750, 60, null);
+				}
+				
+				
+				
+				public void drawTimer(Graphics graphics,String seconds) {
+					
+					graphics.setColor(Color.WHITE);
+					graphics.drawString(seconds, 50, 50);
+					
+					
 				}
 				
 				

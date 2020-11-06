@@ -50,8 +50,9 @@ public class DrawingBoard extends JPanel {
 					private boolean frogDrown=false;
 					private int loadImageCounter=0;
 					private int timerTitle=0;
+					private JLabel timeLeft = new JLabel("29");
 					
-					Timers t = new Timers(mo,frogJump,frog,car,cars,timerEnding,timerFinished,component);
+					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component);
 						
 		
 					
@@ -155,13 +156,15 @@ public class DrawingBoard extends JPanel {
 						if(gameEnded==false) {
 							
 							
-							t.timer(timerFinished);
+							t.timer(timerFinished,timeLeft);
 							
 							gameEnded=true;
 						}	
 						
 						backCounter++;
 						stop.setText("Start");
+						
+						
 						
 						if(cars.getText().equals("False")) {
 							
@@ -175,6 +178,7 @@ public class DrawingBoard extends JPanel {
 							
 						car.drawBackground(g);
 						
+						frog.drawTimer(g, ""+timeLeft.getText());
 						
 						//400x133 are image dimensions
 					
@@ -287,6 +291,7 @@ public class DrawingBoard extends JPanel {
 							frogDrown=false;
 							timerTitle=0;
 							mo.setFrame(0);
+							timeLeft.setText("29");
 							
 						}
 										

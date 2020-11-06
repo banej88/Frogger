@@ -32,10 +32,11 @@ public class Timers {
 	private int timerCar=0;
 	private int timerBackground=0;
 	private int timerTitle=0;
+	private JLabel timeLeft;
 	
 	//Naming is not great, need to fix that.
 	
-	public Timers(MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
+	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
 		
 		this.timerFinished=timerFinished;
 		this.timerEnding=timerEnding;
@@ -44,19 +45,21 @@ public class Timers {
 		this.frogMain=frogMain;
 		this.frogJump=frogJump;
 		this.mo=mo;
+		this.timeLeft=timeLeft;
 		
 	}
 	
 	
 	
-	public void timer(JLabel timerFinished) {
+	public void timer(JLabel timerFinished,JLabel timeLeft) {
 		
 	this.timerFinished=timerFinished;
+	this.timeLeft=timeLeft;
 	
 	t = new Timer(1000, new ActionListener() {
           public void actionPerformed(ActionEvent e) {	    	  
         	  
-        	  	
+        	  	timeLeft.setText(""+(29-counter));
         	  	counter++;
         	  	//System.out.println(counter);
         	  	if(counter==30) {
@@ -244,7 +247,7 @@ public class Timers {
 		this.mo=mo;
 		this.component=component;
 		
-		title = new Timer(200, new ActionListener() {
+		title = new Timer(100, new ActionListener() {
 			
 			
 				public void actionPerformed(ActionEvent e) {
