@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;
@@ -22,32 +23,38 @@ public class Boxes {
 	
 					public void draw(Graphics g) {
 						
+						g.setFont(new Font("MS Gothic", Font.BOLD,20));
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Zdravo Zabice. Pokusaj da prezivis.", 310, 130);
-						g.drawString("Ako uspes da prezivis dobices plazmu :) Pritisni ENTER", 310, 145);
+						g.drawString("Hello Frogger,", 310, 130);
+						g.drawString("Try to survive and ", 310, 160);
+						g.drawString("get to the princess.", 310, 190);
+						g.drawString("Press enter to continue...", 310, 220);
 						
 						
 					}
 					
 					public void drawEnd(Graphics g) {
 						
+						g.setFont(new Font("MS Gothic", Font.BOLD,20));
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Vreme je isteklo a plazme nidje Pritisni ENTER", 310, 130);
-						
+						g.drawString("Time is up.", 310, 130);
+						g.drawString("Press enter to continue...", 310, 160);
 
 						
 					}
 					
 					public void drawEndDead(Graphics g) {
 						
+						g.setFont(new Font("MS Gothic", Font.BOLD,20));
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Zabica je zgazena...Pritisni ENTER", 310, 130);
+						g.drawString("Frogger was hit by a car.", 310, 130);
+						g.drawString("Press enter to continue...", 310, 160);
 						
 
 						
@@ -55,10 +62,12 @@ public class Boxes {
 					
 					public void drawEndDeadDrown(Graphics g) {
 						
+						g.setFont(new Font("MS Gothic", Font.BOLD,20));
 						g.setColor(Color.BLACK);
 						g.fillRect(getPosX(), getPosY(), 400, 200);;
 						g.setColor(Color.WHITE);
-						g.drawString("Zabica se utopila...Pritisni ENTER", 310, 130);
+						g.drawString("Frogger drowned.", 310, 130);
+						g.drawString("Press enter to continue...", 310, 160);
 						
 
 						

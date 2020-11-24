@@ -16,6 +16,7 @@ public class Gui implements Runnable{
 	CharacterFrog frog = new CharacterFrog(500,670,0);
 	CharacterCar car = new CharacterCar(1600,500,0);
 	MenuObjects mo = new MenuObjects();
+	Logs log = new Logs(700,280,700,200);
 	Boxes bx = new Boxes();
 	private JLabel startGame=new JLabel("False");
 	private JLabel timer = new JLabel("Timer");
@@ -45,7 +46,7 @@ public class Gui implements Runnable{
 			
 				//
 		
-				DrawingBoard db = new DrawingBoard(frogJump,car,timerEnding,timerFinished,stop,timer,bx,startGame,mo,frame,frog);
+				DrawingBoard db = new DrawingBoard(frogJump,car,timerEnding,timerFinished,stop,timer,bx,startGame,mo,frame,frog,log);
 			
 				container.add(db);
 				KeyListeners kl = new KeyListeners(frogJump,stop,startGame,bx,frame,frog,db);

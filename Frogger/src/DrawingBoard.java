@@ -28,6 +28,7 @@ public class DrawingBoard extends JPanel {
 					CharacterFrog frog;
 					MenuObjects mo;
 					CharacterCar car;
+					Logs log;
 					private JLabel cars=new JLabel("False");
 					Boxes bx;
 					Image img=null;
@@ -50,13 +51,14 @@ public class DrawingBoard extends JPanel {
 					private boolean frogDrown=false;
 					private int loadImageCounter=0;
 					private int timerTitle=0;
+					private JLabel newTimer = new JLabel("False");
 					private JLabel timeLeft = new JLabel("29");
 					
-					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component);
+					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component,newTimer,log);
 						
 		
 					
-					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog) {
+					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog,Logs log) {
 						
 						
 						super.setBackground(Color.BLACK);
@@ -71,6 +73,7 @@ public class DrawingBoard extends JPanel {
 						this.timerEnding=timerEnding;
 						this.car=car;
 						this.frogJump=frogJump;
+						this.log=log;
 						
 						
 					}
@@ -91,8 +94,10 @@ public class DrawingBoard extends JPanel {
 					if(timerTitle<1) {
 					mo.loadTitle();
 					t.titleTimer(mo,component);
+					newTimer.setText("True");
 					timerTitle++;
 					}
+					
 					
 					mo.draw(g);
 					
@@ -114,7 +119,8 @@ public class DrawingBoard extends JPanel {
 						
 						if(loadImageCounter<1) {
 						try {
-							
+								
+								log.loadLogImages();
 								car.loadImages();
 								frog.loadFrog();
 								loadImageCounter++;
@@ -133,6 +139,7 @@ public class DrawingBoard extends JPanel {
 						
 						bx.draw(g);	
 						started=true;
+						
 						
 						//play is counter that starts playing song only once and it increases after song starts so no multiple instances of song is started
 						
@@ -156,7 +163,7 @@ public class DrawingBoard extends JPanel {
 						if(gameEnded==false) {
 							
 							
-							t.timer(timerFinished,timeLeft);
+							t.timer(timerFinished,timeLeft,frog,newTimer);
 							
 							gameEnded=true;
 						}	
@@ -174,9 +181,14 @@ public class DrawingBoard extends JPanel {
 					
 							t.timerCar(car,cars,timerEnding,component);
 							
+							t.timerLogs(log,component);
+							
 							}
 							
 						car.drawBackground(g);
+						log.drawLog02(g);
+						log.drawLog01(g);
+						
 						
 						frog.drawTimer(g, ""+timeLeft.getText());
 						
@@ -215,6 +227,7 @@ public class DrawingBoard extends JPanel {
 							frog.draw(g);
 							frog.drawPrincess(g);
 							
+							
 						}
 						
 						
@@ -233,26 +246,29 @@ public class DrawingBoard extends JPanel {
 					//component.repaint();
 					
 					// if timer first game timer is finished it will show up box with ending message
-					
-					
 					if(this.timerFinished.getText().equals("True") || isFrogDead==true) {
 						
 						if(isFrogDead) {
 							
 							if(frogDrown==true) {
 								
+								
 								bx.drawEndDeadDrown(g);
 								
 								
 							}else {
-								
+							
+							
 							bx.drawEndDead(g);  
 							
 							
 							}
 							
 						}else {
+							
+						
 						bx.drawEnd(g);
+						
 						
 						}
 						
@@ -262,8 +278,10 @@ public class DrawingBoard extends JPanel {
 						t.timerE(timerEnding);
 						t.animations.stop();
 						t.background.stop();
+						t.logs.stop();
 						isFrogDead=false;
 						car.setFrame(6);
+						
 						//component.repaint(); // causing memory leak
 					
 						

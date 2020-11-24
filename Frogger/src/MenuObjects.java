@@ -72,9 +72,10 @@ public class MenuObjects {
 						
 									g.drawImage(title[frame], 0, 0,null);
 									g.setColor(Color.WHITE);
+									g.setFont(new Font("MS Gothic", Font.BOLD,20));
 									g.drawString("Start game", startX, startY);
 									g.drawString("Exit game", endX, endY);
-									g.drawString("Made by Branko Jesic 2020", 800, 700);
+									g.drawString("Made by Branko Jesic 2020", 700, 700);
 														
 					}
 					

@@ -23,9 +23,7 @@ public class CharacterCar {
 				private List<Image> lista = new ArrayList<Image>();
 				private BufferedImage imgBackround[] =new BufferedImage[7];
 				private BufferedImage img[]=new BufferedImage[7];
-				
-				
-				
+						
 				
 				public void loadImages() throws IOException {
 					
@@ -49,8 +47,7 @@ public class CharacterCar {
 					img[4] = ImageIO.read(new File("Animations/Lambo/lambo005.png"));
 					img[5] = ImageIO.read(new File("Animations/Lambo/lambo006.png"));
 					img[6] = ImageIO.read(new File("Animations/Lambo/lamboNoLambo.png"));
-	
-					
+
 				}
 				
 				
@@ -63,8 +60,7 @@ public class CharacterCar {
 					this.positionY=y;
 					this.frame=frame;
 				}
-				
-				
+										
 				public int getPositionX() {
 					
 					return this.positionX;

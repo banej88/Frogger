@@ -16,6 +16,8 @@ public class CharacterFrog {
 				int positionY;
 				int frame;
 				BufferedImage img[]=new BufferedImage[8];
+				
+				
 				//
 				
 				public void loadFrog() throws IOException {
@@ -104,11 +106,16 @@ public class CharacterFrog {
 				
 				public void drawTimer(Graphics graphics,String seconds) {
 					
+					graphics.setFont(new Font("MS Gothic", Font.BOLD,50));
 					graphics.setColor(Color.WHITE);
 					graphics.drawString(seconds, 50, 50);
 					
-					
+						
 				}
+				
+			
+				
+				
 				
 				
 				

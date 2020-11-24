@@ -16,7 +16,9 @@ public class Timers {
 	Timer frog;
 	Timer menu;
 	Timer title;
+	Timer logs;
 	CharacterCar car2;
+	Logs log;
 	CharacterFrog frogMain;
 	MenuObjects mo;
 	private int counter=0;
@@ -33,10 +35,11 @@ public class Timers {
 	private int timerBackground=0;
 	private int timerTitle=0;
 	private JLabel timeLeft;
+	private JLabel newTimer;
 	
 	//Naming is not great, need to fix that.
 	
-	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component) {
+	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component,JLabel newTimer,Logs log) {
 		
 		this.timerFinished=timerFinished;
 		this.timerEnding=timerEnding;
@@ -46,18 +49,54 @@ public class Timers {
 		this.frogJump=frogJump;
 		this.mo=mo;
 		this.timeLeft=timeLeft;
+		this.newTimer=newTimer;
+		this.log=log;
 		//
 	}
 	
+	public void timerLogs(Logs log,Component component) {
+		
+		this.log=log;
+		this.component=component;
+		
+		logs = new Timer(500,new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//log.setLog01X(700);
+				//log.setLog01Y(700);
+				//log.setLog02X(100);
+				//log.setLog02Y(100);
+				component.repaint();
+				
+				
+			}
+			
+			
+		});logs.start();
+		
+		
+	}
 	
-	
-	public void timer(JLabel timerFinished,JLabel timeLeft) {
+	public void timer(JLabel timerFinished,JLabel timeLeft,CharacterFrog frogMain,JLabel newTimer) {
 		
 	this.timerFinished=timerFinished;
 	this.timeLeft=timeLeft;
+	this.frogMain=frogMain;
+	this.newTimer=newTimer;
 	
 	t = new Timer(1000, new ActionListener() {
           public void actionPerformed(ActionEvent e) {	    	  
+        	  	
+        	  //System.out.println(newTimer.getText());
+        	  	
+        	  if(newTimer.getText().equals("True")) {
+        		  counter=0;
+        		  newTimer.setText("False");
+        		  
+        	  }
+        	  	  	
         	  
         	  	timeLeft.setText(""+(29-counter));
         	  	counter++;
@@ -65,9 +104,8 @@ public class Timers {
         	  	if(counter==30) {
         	  		
         	  		t.stop();
-        	  		timerFinished.setText("True");
         	  		counter=0;
-        	  		
+        	  		timerFinished.setText("True");
         	  		
         	  	}
         	  	  	

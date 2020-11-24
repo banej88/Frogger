@@ -27,7 +27,7 @@ public class MouseEvent implements MouseListener{
 		
 		//need to make it scalable
 		
-		for(int i=52;i<109;i++) {
+		for(int i=52;i<160;i++) {
 			
 			listX.add(i);
 		}
