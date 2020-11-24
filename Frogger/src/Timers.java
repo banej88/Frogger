@@ -17,6 +17,7 @@ public class Timers {
 	Timer menu;
 	Timer title;
 	Timer logs;
+	Timer end;
 	CharacterCar car2;
 	Logs log;
 	Logs log2;
@@ -35,13 +36,15 @@ public class Timers {
 	private int timerCar=0;
 	private int timerBackground=0;
 	private int timerTitle=0;
+	private int timerEnd=6;
 	private JLabel timeLeft;
 	private JLabel newTimer;
 	private int logCounter=0;
+	private JLabel endChange;
 	
 	//Naming is not great, need to fix that.
 	
-	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component,JLabel newTimer,Logs log,Logs log2) {
+	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component,JLabel newTimer,Logs log,Logs log2,JLabel endChange) {
 		
 		this.timerFinished=timerFinished;
 		this.timerEnding=timerEnding;
@@ -54,6 +57,7 @@ public class Timers {
 		this.newTimer=newTimer;
 		this.log=log;
 		this.log2=log2;
+		this.endChange=endChange;
 		//
 	}
 	
@@ -98,8 +102,9 @@ public class Timers {
 				
 				
 				
-				if(logCounter>150) {
+				if(logCounter>130) {
 					
+					//System.out.println(logCounter);
 					log2.setLog01X(log2.getLog01X()-4);
 					log2.setLog02X(log2.getLog02X()-8);
 					
@@ -134,6 +139,7 @@ public class Timers {
         	  	
         	  if(newTimer.getText().equals("True")) {
         		  counter=0;
+        		  logCounter=0;
         		  newTimer.setText("False");
         		  
         	  }
@@ -356,6 +362,48 @@ public class Timers {
 				
 		
 	}
+	
+	
+	
+	
+	public void endTimer(MenuObjects mo,Component component,JLabel endChange) {
+		
+		this.mo=mo;
+		this.component=component;
+		this.endChange=endChange;
+		
+		end = new Timer(100, new ActionListener() {
+			
+			
+				public void actionPerformed(ActionEvent e) {
+					
+					
+					mo.setFrameEnd(timerEnd);
+					
+					
+					if(timerEnd==21) {
+									
+							end.stop();
+							timerEnd=6;
+							endChange.setText("False");
+							
+						
+						
+					}
+					timerEnd++;
+					component.repaint();	
+					
+				}
+		
+			
+		});end.start();
+				
+		
+	}
+	
+	
+	
+	
 	
 	
 

@@ -31,6 +31,8 @@ public class CharacterFrog {
 				img[6] = ImageIO.read(new File("Animations/Frog/frogDrown.png"));
 				img[7] = ImageIO.read(new File("Animations/Frog/princess.png"));
 				
+				
+				
 				}
 				
 				public CharacterFrog(int x,int y,int frame) {
@@ -112,6 +114,8 @@ public class CharacterFrog {
 					
 						
 				}
+				
+				
 				
 			
 				

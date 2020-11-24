@@ -51,16 +51,19 @@ public class DrawingBoard extends JPanel {
 					private int backCounter=0;
 					private boolean isFrogDead=false;
 					private boolean frogDrown=false;
+					private boolean frogVictory=false;
 					private int loadImageCounter=0;
 					private int timerTitle=0;
 					private JLabel newTimer = new JLabel("False");
 					private JLabel timeLeft = new JLabel("29");
+					private int timerEndCounter=0;
+					private JLabel endChange;
 					
-					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component,newTimer,log,log2);
+					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component,newTimer,log,log2,endChange);
 						
 		
 					
-					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog,Logs log,Logs log2) {
+					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog,Logs log,Logs log2,JLabel endChange) {
 						
 						
 						super.setBackground(Color.BLACK);
@@ -77,7 +80,7 @@ public class DrawingBoard extends JPanel {
 						this.frogJump=frogJump;
 						this.log=log;
 						this.log2=log2;
-						
+						this.endChange=endChange;
 						
 					}
 							
@@ -212,17 +215,16 @@ public class DrawingBoard extends JPanel {
 						}
 						
 						//check if frog is in the river or log
-						
+					
 						
 						if(frog.getPostitionY()>=180 && frog.getPostitionY()<=315) {
 							
 							//check if frog is on the log
-							
-							
+
 							if(frog.getPositionX()>=log.getLog01X()-50 && frog.getPositionX()<=log.getLog01X()+150
 									&&frog.getPostitionY()>=log.getLog01Y()-20 && frog.getPostitionY()<=log.getLog01Y()+80) {
 								
-								frog.setPositionX(log.getLog01X());
+								frog.setPositionX(log.getLog01X()+10);
 								
 								log.drawLog02(g);	
 								log.drawLog01(g);
@@ -236,7 +238,7 @@ public class DrawingBoard extends JPanel {
 							else if(frog.getPositionX()>=log2.getLog01X()-50 && frog.getPositionX()<=log2.getLog01X()+150
 									&&frog.getPostitionY()>=log2.getLog01Y()-20 && frog.getPostitionY()<=log2.getLog01Y()+80) {
 								
-								frog.setPositionX(log2.getLog01X());
+								frog.setPositionX(log2.getLog01X()+10);
 								
 								log.drawLog02(g);	
 								log.drawLog01(g);
@@ -247,17 +249,62 @@ public class DrawingBoard extends JPanel {
 								
 								
 							}
+							// top log
 							
+							else if(frog.getPositionX()>=log.getLog02X()-50 && frog.getPositionX()<=log.getLog02X()+180
+									&&frog.getPostitionY()>=log.getLog02Y()-20 && frog.getPostitionY()<=log.getLog02Y()+80) {
+								
+								frog.setPositionX(log.getLog02X()+25);
+								
+								log.drawLog02(g);	
+								log.drawLog01(g);
+								log2.drawLog02(g);
+								log2.drawLog01(g);
+								frog.draw(g);
+								frog.drawPrincess(g);
+								
+								
+							}
+							else if(frog.getPositionX()>=log2.getLog02X()-50 && frog.getPositionX()<=log2.getLog02X()+180
+									&&frog.getPostitionY()>=log2.getLog02Y()-20 && frog.getPostitionY()<=log2.getLog02Y()+80) {
+								
+								frog.setPositionX(log2.getLog02X()+25);
+								
+								log.drawLog02(g);	
+								log.drawLog01(g);
+								log2.drawLog02(g);
+								log2.drawLog01(g);
+								frog.draw(g);
+								frog.drawPrincess(g);
+								
+								
+							}
+														
 							else {	
 								
-							car.drawBackgroundOver(g);  
-							frog.drawDrown(g);
-							isFrogDead=true;
+							car.drawBackgroundOver(g); 
+							frog.drawDrown(g); 
 							frogDrown=true;
 							music.playDrowned();
 							t.t.stop();
 							
+							
 							}
+							
+						}else if(frog.getPositionX()>=660 && frog.getPostitionY()<=100) {
+							
+							if(timerEndCounter<1) {
+								t.endTimer(mo, component,endChange);
+								endChange.setText("True");
+								timerEndCounter++;
+								}
+							
+								car.drawBackgroundOver(g);  
+								isFrogDead=true;	
+								frogVictory=true;
+								t.t.stop();
+								
+								
 							
 						}
 						
@@ -294,6 +341,17 @@ public class DrawingBoard extends JPanel {
 					//component.repaint();
 					
 					// if timer first game timer is finished it will show up box with ending message
+					
+					if(frogVictory==true && endChange.getText().equals("True")){
+						
+						
+						
+						mo.drawEnd(g);
+								
+					
+					}else
+					
+					
 					if(this.timerFinished.getText().equals("True") || isFrogDead==true) {
 						
 						if(isFrogDead) {
@@ -304,7 +362,13 @@ public class DrawingBoard extends JPanel {
 								bx.drawEndDeadDrown(g);
 								
 								
-							}else {
+							}else if(frogVictory==true){
+								
+								bx.drawEndFinal(g);
+								mo.setFrameEnd(20);
+								mo.drawEnd(g);
+								
+							}else{
 							
 							
 							bx.drawEndDead(g);  
@@ -312,7 +376,9 @@ public class DrawingBoard extends JPanel {
 							
 							}
 							
-						}else {
+						}
+						
+						else {
 							
 						
 						bx.drawEnd(g);
@@ -329,6 +395,7 @@ public class DrawingBoard extends JPanel {
 						t.logs.stop();
 						isFrogDead=false;
 						car.setFrame(6);
+						
 						
 						//component.repaint(); // causing memory leak
 					
@@ -362,6 +429,9 @@ public class DrawingBoard extends JPanel {
 							timerTitle=0;
 							mo.setFrame(0);
 							timeLeft.setText("29");
+							frogVictory=false;
+							timerEndCounter=0;
+							
 							
 						}
 										

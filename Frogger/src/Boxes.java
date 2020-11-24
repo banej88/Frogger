@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import javax.swing.JLabel;
 
 public class Boxes {
-			
+				
+					
+				
 				
 					private int posX=300;
 					private int posY=100;
@@ -72,6 +74,16 @@ public class Boxes {
 
 						
 					}
+					
+					public void drawEndFinal(Graphics g) {
+						
+						
+						
+
+						
+					}
+					
+				
 					
 					
 					

@@ -15,7 +15,8 @@ public class MenuObjects {
 					private int endX=50;
 					private int endY=90;
 					private int frame=0;
-					private BufferedImage title[] = new BufferedImage[6];
+					private int frame2=6;
+					private BufferedImage title[] = new BufferedImage[24];
 					
 					public void loadTitle(){
 						
@@ -27,6 +28,21 @@ public class MenuObjects {
 					title[3] = ImageIO.read(new File("Animations/Title/title04.png"));
 					title[4] = ImageIO.read(new File("Animations/Title/title05.png"));
 					title[5] = ImageIO.read(new File("Animations/Title/title06.png"));
+					title[6] = ImageIO.read(new File("Animations/Frog/fin001.png"));
+					title[7] = ImageIO.read(new File("Animations/Frog/fin002.png"));
+					title[8] = ImageIO.read(new File("Animations/Frog/fin003.png"));
+					title[9] = ImageIO.read(new File("Animations/Frog/fin004.png"));
+					title[10] = ImageIO.read(new File("Animations/Frog/fin005.png"));
+					title[11] = ImageIO.read(new File("Animations/Frog/fin006.png"));
+					title[12] = ImageIO.read(new File("Animations/Frog/fin007.png"));
+					title[13] = ImageIO.read(new File("Animations/Frog/fin008.png"));
+					title[14] = ImageIO.read(new File("Animations/Frog/fin009.png"));
+					title[15] = ImageIO.read(new File("Animations/Frog/fin010.png"));
+					title[16] = ImageIO.read(new File("Animations/Frog/fin011.png"));
+					title[17] = ImageIO.read(new File("Animations/Frog/fin012.png"));
+					title[18] = ImageIO.read(new File("Animations/Frog/fin013.png"));
+					title[19] = ImageIO.read(new File("Animations/Frog/fin014.png"));
+					title[20] = ImageIO.read(new File("Animations/Frog/fin015.png"));
 					
 					}catch (Exception e) {
 						
@@ -64,6 +80,13 @@ public class MenuObjects {
 					
 						
 					}
+					
+					public void setFrameEnd(int frame2) {
+						
+						this.frame2=frame2;
+					
+						
+					}
 	
 	
 					public void draw(Graphics g) {
@@ -79,5 +102,11 @@ public class MenuObjects {
 														
 					}
 					
-				
+					public void drawEnd(Graphics graphics) {
+						
+						
+									graphics.drawImage(title[frame2], 0, 0, null);
+						
+						
+					}
 }
