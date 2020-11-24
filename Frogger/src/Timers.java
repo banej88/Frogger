@@ -19,6 +19,7 @@ public class Timers {
 	Timer logs;
 	CharacterCar car2;
 	Logs log;
+	Logs log2;
 	CharacterFrog frogMain;
 	MenuObjects mo;
 	private int counter=0;
@@ -36,10 +37,11 @@ public class Timers {
 	private int timerTitle=0;
 	private JLabel timeLeft;
 	private JLabel newTimer;
+	private int logCounter=0;
 	
 	//Naming is not great, need to fix that.
 	
-	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component,JLabel newTimer,Logs log) {
+	public Timers(JLabel timeLeft,MenuObjects mo,JLabel frogJump,CharacterFrog frogMain,CharacterCar car2,JLabel cars,JLabel timerEnding,JLabel timerFinished,Component component,JLabel newTimer,Logs log,Logs log2) {
 		
 		this.timerFinished=timerFinished;
 		this.timerEnding=timerEnding;
@@ -51,23 +53,62 @@ public class Timers {
 		this.timeLeft=timeLeft;
 		this.newTimer=newTimer;
 		this.log=log;
+		this.log2=log2;
 		//
 	}
 	
-	public void timerLogs(Logs log,Component component) {
+	public void timerLogs(Logs log,Component component,Logs log2) {
 		
 		this.log=log;
+		this.log2=log2;
 		this.component=component;
 		
-		logs = new Timer(500,new ActionListener() {
+		
+		logs = new Timer(30,new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				//log.setLog01X(700);
-				//log.setLog01Y(700);
-				//log.setLog02X(100);
-				//log.setLog02Y(100);
+				
+				if(log.getLog01X()<=-100) {
+					
+					log.setLog01X(1600);
+					
+				}
+				
+				if(log.getLog02X()<=-100) {
+					
+					log.setLog02X(1600);
+					
+				}
+				
+				if(log2.getLog01X()<=-100) {
+					
+					log2.setLog01X(1600);
+					
+				}
+				
+				if(log2.getLog02X()<=-100) {
+					
+					log2.setLog02X(1600);
+					
+				}
+				
+				logCounter++;
+				
+				
+				
+				if(logCounter>150) {
+					
+					log2.setLog01X(log2.getLog01X()-4);
+					log2.setLog02X(log2.getLog02X()-8);
+					
+				}
+				
+				
+				log.setLog01X(log.getLog01X()-4);
+				log.setLog02X(log.getLog02X()-8);
+				
 				component.repaint();
 				
 				
@@ -106,6 +147,7 @@ public class Timers {
         	  		t.stop();
         	  		counter=0;
         	  		timerFinished.setText("True");
+        	  		logCounter=0;
         	  		
         	  	}
         	  	  	

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
@@ -29,6 +30,7 @@ public class DrawingBoard extends JPanel {
 					MenuObjects mo;
 					CharacterCar car;
 					Logs log;
+					Logs log2;
 					private JLabel cars=new JLabel("False");
 					Boxes bx;
 					Image img=null;
@@ -54,11 +56,11 @@ public class DrawingBoard extends JPanel {
 					private JLabel newTimer = new JLabel("False");
 					private JLabel timeLeft = new JLabel("29");
 					
-					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component,newTimer,log);
+					Timers t = new Timers(timeLeft,mo,frogJump,frog,car,cars,timerEnding,timerFinished,component,newTimer,log,log2);
 						
 		
 					
-					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog,Logs log) {
+					public DrawingBoard(JLabel frogJump,CharacterCar car,JLabel timerEnding,JLabel timerFinished,JLabel stop,JLabel timer,Boxes bx,JLabel gameStarted,MenuObjects mo,Component component,CharacterFrog frog,Logs log,Logs log2) {
 						
 						
 						super.setBackground(Color.BLACK);
@@ -74,6 +76,7 @@ public class DrawingBoard extends JPanel {
 						this.car=car;
 						this.frogJump=frogJump;
 						this.log=log;
+						this.log2=log2;
 						
 						
 					}
@@ -121,6 +124,7 @@ public class DrawingBoard extends JPanel {
 						try {
 								
 								log.loadLogImages();
+								log2.loadLogImages();
 								car.loadImages();
 								frog.loadFrog();
 								loadImageCounter++;
@@ -181,15 +185,12 @@ public class DrawingBoard extends JPanel {
 					
 							t.timerCar(car,cars,timerEnding,component);
 							
-							t.timerLogs(log,component);
+							t.timerLogs(log,component,log2);
 							
 							}
 							
 						car.drawBackground(g);
-						log.drawLog02(g);
-						log.drawLog01(g);
-						
-						
+							
 						frog.drawTimer(g, ""+timeLeft.getText());
 						
 						//400x133 are image dimensions
@@ -210,22 +211,69 @@ public class DrawingBoard extends JPanel {
 							
 						}
 						
-						//check if frog is in the river
+						//check if frog is in the river or log
+						
 						
 						if(frog.getPostitionY()>=180 && frog.getPostitionY()<=315) {
 							
+							//check if frog is on the log
+							
+							
+							if(frog.getPositionX()>=log.getLog01X()-50 && frog.getPositionX()<=log.getLog01X()+150
+									&&frog.getPostitionY()>=log.getLog01Y()-20 && frog.getPostitionY()<=log.getLog01Y()+80) {
+								
+								frog.setPositionX(log.getLog01X());
+								
+								log.drawLog02(g);	
+								log.drawLog01(g);
+								log2.drawLog02(g);
+								log2.drawLog01(g);
+								frog.draw(g);
+								frog.drawPrincess(g);
+								
+								
+							}
+							else if(frog.getPositionX()>=log2.getLog01X()-50 && frog.getPositionX()<=log2.getLog01X()+150
+									&&frog.getPostitionY()>=log2.getLog01Y()-20 && frog.getPostitionY()<=log2.getLog01Y()+80) {
+								
+								frog.setPositionX(log2.getLog01X());
+								
+								log.drawLog02(g);	
+								log.drawLog01(g);
+								log2.drawLog02(g);
+								log2.drawLog01(g);
+								frog.draw(g);
+								frog.drawPrincess(g);
+								
+								
+							}
+							
+							else {	
+								
 							car.drawBackgroundOver(g);  
 							frog.drawDrown(g);
 							isFrogDead=true;
 							frogDrown=true;
 							music.playDrowned();
 							t.t.stop();
+							
+							}
+							
 						}
 						
 						else if(isFrogDead==false){
 							
 							frog.draw(g);
 							frog.drawPrincess(g);
+							
+							log.drawLog02(g);	
+							log.drawLog01(g);
+							log2.drawLog02(g);
+							log2.drawLog01(g);
+							
+							
+							
+							
 							
 							
 						}
@@ -302,6 +350,10 @@ public class DrawingBoard extends JPanel {
 							frog.setPositionX(500);
 							frog.setPositionY(670);
 							car.setPositionX(800);
+							log.setLog01X(1600);
+							log.setLog02X(1600);
+							log2.setLog01X(1600);
+							log2.setLog02X(1600);
 							this.cars.setText("False");
 							backCounter=0;
 							music.resetSquishCount();
