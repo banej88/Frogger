@@ -29,6 +29,7 @@ public class CharacterCar {
 					
 					//image buffer used
 					//
+					//
 					
 					imgBackround[0] = ImageIO.read(new File("Animations/BackgroundLevel01/back001.png"));
 					imgBackround[1] = ImageIO.read(new File("Animations/BackgroundLevel01/back002.png"));

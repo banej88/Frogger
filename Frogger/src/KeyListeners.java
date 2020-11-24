@@ -41,6 +41,8 @@ public class KeyListeners implements KeyListener{
 		this.stop=stop;
 		this.frogJump=frogJump;
 		
+		//
+		
 	}
 	
 

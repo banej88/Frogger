@@ -21,6 +21,8 @@ public class Logs {
 					
 				}
 				
+				//
+				
 				public Logs(int l01x,int l01y,int l02x,int l02y) {
 					
 					this.Log01x=l01x;

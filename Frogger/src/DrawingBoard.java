@@ -368,6 +368,8 @@ public class DrawingBoard extends JPanel {
 								mo.setFrameEnd(20);
 								mo.drawEnd(g);
 								
+								//
+								
 							}else{
 							
 							

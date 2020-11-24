@@ -107,6 +107,6 @@ public class MenuObjects {
 						
 									graphics.drawImage(title[frame2], 0, 0, null);
 						
-						
+						//
 					}
 }

@@ -42,7 +42,7 @@ public class Gui implements Runnable{
 		frame.setVisible(true);
 		frame.setResizable(false);
 			
-		
+		//
 	}
 	
 	
