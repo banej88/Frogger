@@ -280,18 +280,22 @@ public class DrawingBoard extends JPanel {
 								
 							}
 														
-							else {	
+							else{	
 								
 							car.drawBackgroundOver(g); 
 							frog.drawDrown(g); 
 							frogDrown=true;
+							isFrogDead=true;
 							music.playDrowned();
 							t.t.stop();
 							
 							
 							}
 							
-						}else if(frog.getPositionX()>=660 && frog.getPostitionY()<=100) {
+						}
+						
+						
+						else if(frog.getPositionX()>=660 && frog.getPostitionY()<=100) {
 							
 							if(timerEndCounter<1) {
 								t.endTimer(mo, component,endChange);
@@ -331,6 +335,7 @@ public class DrawingBoard extends JPanel {
 						
 						//car.setFrame(0);
 						car.draw(g);
+						car.drawTruck(g);
 						
 						
 						
@@ -347,6 +352,7 @@ public class DrawingBoard extends JPanel {
 						
 						
 						mo.drawEnd(g);
+						music.stopGameSong();
 								
 					
 					}else
@@ -367,6 +373,7 @@ public class DrawingBoard extends JPanel {
 								bx.drawEndFinal(g);
 								mo.setFrameEnd(20);
 								mo.drawEnd(g);
+								bx.drawEndFinal(g);
 								
 								//
 								
@@ -397,6 +404,7 @@ public class DrawingBoard extends JPanel {
 						t.logs.stop();
 						isFrogDead=false;
 						car.setFrame(6);
+						car.setFrameTruck(6);
 						
 						
 						//component.repaint(); // causing memory leak
@@ -418,7 +426,8 @@ public class DrawingBoard extends JPanel {
 							timerEnding.setText("False");
 							frog.setPositionX(500);
 							frog.setPositionY(670);
-							car.setPositionX(800);
+							car.setPositionX(1600);
+							car.setTruckPositionX(2000);
 							log.setLog01X(1600);
 							log.setLog02X(1600);
 							log2.setLog01X(1600);
@@ -433,6 +442,7 @@ public class DrawingBoard extends JPanel {
 							timeLeft.setText("29");
 							frogVictory=false;
 							timerEndCounter=0;
+							mo.setFrameEnd(6);
 							
 							
 						}

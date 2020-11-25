@@ -215,6 +215,11 @@ public class Timers {
 					
 				}
 				
+				if(car2.getTruckPositionX()<=-600) {
+					
+					car2.setTruckPositionX(1600);
+					
+				}
 				
 				
 			//	if(timerCar==5) {
@@ -223,6 +228,7 @@ public class Timers {
 				
 				timerCar++;
 				car2.setPositionX(car2.getPositionX()-3);
+				car2.setTruckPositionX(car2.getTruckPositionX()-3);
 						
 				if(timerEnding.getText().equals("True")) {
 					
@@ -253,6 +259,7 @@ public class Timers {
 			public void actionPerformed(ActionEvent e) {
 							
 				car2.setFrame(counterCarFrame);
+				car2.setFrameTruck(counterCarFrame);
 					
 				counterCarFrame++;
 						

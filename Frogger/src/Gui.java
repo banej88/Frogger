@@ -15,7 +15,7 @@ public class Gui implements Runnable{
 	
 	private JFrame frame;
 	CharacterFrog frog = new CharacterFrog(500,670,0);
-	CharacterCar car = new CharacterCar(1600,500,0);
+	CharacterCar car = new CharacterCar(1600,500,0,2000,300,0);
 	MenuObjects mo = new MenuObjects();
 	Logs log = new Logs(1600,260,1600,165);
 	Logs log2 = new Logs(1600,260,1600,165);

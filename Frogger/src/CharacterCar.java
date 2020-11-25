@@ -17,12 +17,16 @@ public class CharacterCar {
 	
 				int positionX;
 				int positionY;
+				int truckPositionX;
+				int truckPositionY;
 				int frame;
 				int frame2;	
+				int frameTruck;
 				private Component component;
 				private List<Image> lista = new ArrayList<Image>();
 				private BufferedImage imgBackround[] =new BufferedImage[7];
 				private BufferedImage img[]=new BufferedImage[7];
+				private BufferedImage truck[]=new BufferedImage[7];
 						
 				
 				public void loadImages() throws IOException {
@@ -48,6 +52,15 @@ public class CharacterCar {
 					img[4] = ImageIO.read(new File("Animations/Lambo/lambo005.png"));
 					img[5] = ImageIO.read(new File("Animations/Lambo/lambo006.png"));
 					img[6] = ImageIO.read(new File("Animations/Lambo/lamboNoLambo.png"));
+					
+					truck[0] = ImageIO.read(new File("Animations/Truck/truck001.png"));
+					truck[1] = ImageIO.read(new File("Animations/Truck/truck002.png"));
+					truck[2] = ImageIO.read(new File("Animations/Truck/truck003.png"));
+					truck[3] = ImageIO.read(new File("Animations/Truck/truck004.png"));
+					truck[4] = ImageIO.read(new File("Animations/Truck/truck005.png"));
+					truck[5] = ImageIO.read(new File("Animations/Truck/truck006.png"));
+					truck[6] = ImageIO.read(new File("Animations/Truck/truck007.png"));
+					
 
 				}
 				
@@ -55,11 +68,14 @@ public class CharacterCar {
 				
 				
 				
-				public CharacterCar(int x,int y,int frame) {
+				public CharacterCar(int x,int y,int frame,int truckX,int truckY,int frameTruck) {
 					
 					this.positionX=x;
 					this.positionY=y;
+					this.truckPositionX=truckX;
+					this.truckPositionY=truckY;
 					this.frame=frame;
+					this.frameTruck=frameTruck;
 				}
 										
 				public int getPositionX() {
@@ -96,6 +112,47 @@ public class CharacterCar {
 					this.frame=frame;
 				}
 				
+				//truck
+				
+				
+				public int getTruckPositionX() {
+					
+					return this.truckPositionX;
+					
+				}
+				
+				public void setTruckPositionX(int x) {
+					
+					this.truckPositionX=x;
+					
+				}
+				
+				public int getTruckPostitionY() {
+					
+					return this.truckPositionY;
+				}
+
+				public void setTruckPositionY(int y) {
+					
+					this.truckPositionY=y;
+				}
+				
+				
+				public void moveTruck(int x,int y) {
+					
+					this.truckPositionX=x+this.truckPositionX;
+					this.truckPositionY=y+this.truckPositionY;
+				}
+				
+				public void setFrameTruck(int frameTruck) {
+					
+					this.frameTruck=frameTruck;
+				}
+				
+				
+				//other
+				
+				
 				public void setFrameBackround(int frame2) {
 					
 					this.frame2=frame2;
@@ -104,6 +161,13 @@ public class CharacterCar {
 				public void draw(Graphics graphics) {
 								
 					graphics.drawImage(img[frame], positionX, positionY, null);
+						
+					
+				}
+				
+				public void drawTruck(Graphics graphics) {
+					
+					graphics.drawImage(truck[frameTruck], truckPositionX, truckPositionY, null);
 						
 					
 				}

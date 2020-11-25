@@ -78,7 +78,10 @@ public class Boxes {
 					public void drawEndFinal(Graphics g) {
 						
 						
-						//
+						g.setFont(new Font("MS Gothic", Font.BOLD,20));
+						g.setColor(Color.WHITE);
+						g.drawString("Frogger found true love.", 700, 670);
+						g.drawString("Press enter to continue...", 700, 700);
 
 						
 					}
