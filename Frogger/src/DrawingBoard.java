@@ -199,10 +199,13 @@ public class DrawingBoard extends JPanel {
 						//400x133 are image dimensions
 					
 						
-						if(frog.getPositionX()>=car.getPositionX()+50 && frog.getPositionX()<=car.getPositionX()+400
-								&& frog.getPostitionY()>=car.getPostitionY() && frog.getPostitionY()<=car.getPostitionY()+133) {
+						if((frog.getPositionX()>=car.getPositionX()+50 && frog.getPositionX()<=car.getPositionX()+400
+								&& frog.getPostitionY()>=car.getPostitionY() && frog.getPostitionY()<=car.getPostitionY()+133)||
+								(frog.getPositionX()>=car.getTruckPositionX()+50 && frog.getPositionX()<=car.getTruckPositionX()+400
+								&& frog.getPostitionY()>=car.getTruckPostitionY()+50 && frog.getPostitionY()<=car.getTruckPostitionY()+180)								
+								) {
 							
-						
+							
 							car.drawBackgroundOver(g);  
 							frog.drawDead(g);
 							isFrogDead=true;	
