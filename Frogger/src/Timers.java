@@ -105,14 +105,14 @@ public class Timers {
 				if(logCounter>130) {
 					
 					//System.out.println(logCounter);
-					log2.setLog01X(log2.getLog01X()-4);
-					log2.setLog02X(log2.getLog02X()-8);
+					log2.setLog01X(log2.getLog01X()-5);
+					log2.setLog02X(log2.getLog02X()-9);
 					
 				}
 				
 				
-				log.setLog01X(log.getLog01X()-4);
-				log.setLog02X(log.getLog02X()-8);
+				log.setLog01X(log.getLog01X()-5);
+				log.setLog02X(log.getLog02X()-9);
 				
 				component.repaint();
 				
@@ -206,7 +206,7 @@ public class Timers {
 		this.timerEnding=timerEnding;
 		this.component=component;
 		
-		car = new Timer(3,new ActionListener() {
+		car = new Timer(16,new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(car2.getPositionX()<=-439) {
@@ -227,8 +227,8 @@ public class Timers {
 				//}
 				
 				timerCar++;
-				car2.setPositionX(car2.getPositionX()-3);
-				car2.setTruckPositionX(car2.getTruckPositionX()-3);
+				car2.setPositionX(car2.getPositionX()-15);
+				car2.setTruckPositionX(car2.getTruckPositionX()-15);
 						
 				if(timerEnding.getText().equals("True")) {
 					

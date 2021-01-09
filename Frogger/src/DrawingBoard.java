@@ -31,6 +31,8 @@ public class DrawingBoard extends JPanel {
 					CharacterCar car;
 					Logs log;
 					Logs log2;
+					Thread carSpeed;
+					Thread logSpeed;
 					private JLabel cars=new JLabel("False");
 					Boxes bx;
 					Image img=null;
@@ -186,10 +188,18 @@ public class DrawingBoard extends JPanel {
 							
 							t.timerBackground(cars,component);
 					
-							t.timerCar(car,cars,timerEnding,component);
+							carSpeed = new Thread() {
+								public void run() {
+									t.timerCar(car,cars,timerEnding,component);
+								}
+							};carSpeed.start();
 							
-							t.timerLogs(log,component,log2);
 							
+							logSpeed = new Thread() {
+								public void run() {	
+									t.timerLogs(log,component,log2);
+								}
+							};logSpeed.start();
 							}
 							
 						car.drawBackground(g);
@@ -446,7 +456,8 @@ public class DrawingBoard extends JPanel {
 							frogVictory=false;
 							timerEndCounter=0;
 							mo.setFrameEnd(6);
-							
+							carSpeed.stop();
+							logSpeed.stop();
 							
 						}
 										
